@@ -2,8 +2,12 @@
 const https = require("https");
 const fs = require("fs");
 
+const {Client: Remote} = require("ssh2")
+
 const adminpass = "hejhallåjagäradmin";
 const monitorpass = "monitor";
+
+const conn = new Remote()
 
 //const httpsServer = new https.createServer({
 //	cert: fs.readFileSync("/etc/letsencrypt/live/daydun.com/fullchain.pem"),
@@ -102,11 +106,23 @@ class Client {
 					command: defaults.monitors[data.a]
 				}));
 			} else if (data.type === "reboot") {
-            let monitor = monitors.find(a => a.id === data.id)
-            // IP = monitor.ip
-            // SKICKA REBOOT
-            // SSH CLIENT SHIT HERE
-         }
+          //IP = monitor.ip
+          let monitor = monitors.find(a => a.id === data.id)
+
+          const host = monitor.ip
+          const port = 0
+          const username = ""
+          const password = ""
+
+          conn.on('ready', () => {
+            conn.exec('sudo reboot', (err, stream) => {
+              if (err) throw err;
+              stream.on('close', (code, signal) => {
+                conn.end();
+              })
+          })
+        }).connect({ host, port, username, password });
+      }
 		}
 	}
 	

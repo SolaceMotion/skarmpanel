@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ssh2": "^1.6.0",
     "ws": "^7.4.5"
   }
 }
