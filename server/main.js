@@ -101,7 +101,12 @@ class Client {
 					type: "command",
 					command: defaults.monitors[data.a]
 				}));
-			}
+			} else if (data.type === "reboot") {
+            let monitor = monitors.find(a => a.id === data.id)
+            // IP = monitor.ip
+            // SKICKA REBOOT
+            // SSH CLIENT SHIT HERE
+         }
 		}
 	}
 	
@@ -114,6 +119,7 @@ class Client {
 			id: this.id,
 			default: defaults.monitors[this.id]
 		}));
+
 		monitors.push(this);
 		
 		admins.forEach(admin => {

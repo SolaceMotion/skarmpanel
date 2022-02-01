@@ -10,6 +10,7 @@ function updateActions() {
 	document.getElementById("button-rename").disabled = selected !== 1;
 	document.getElementById("button-swap").disabled = selected !== 2;
 	document.getElementById("button-reset").disabled = selected === 0;
+	document.getElementById("button-reboot").disabled = selected === 0;
 }
 
 class Monitor {
@@ -52,6 +53,13 @@ class Monitor {
 			default: def
 		}));
 	}
+
+   sendReboot() {
+      ws.send(JSON.stringify({
+         type: "reboot",
+         id: this.id
+      }))
+   }
 	
 	rename(newId) {
 		ws.send(JSON.stringify({
@@ -132,4 +140,10 @@ window.addEventListener("DOMContentLoaded", function() {
 			monitor.sendCommand("location.reload();", false);
 		});
 	});
+   document.getElementById("button-reboot").addEventListener("click", function() {
+      monitors.forEach(monitor => {
+         if(!monitor.selected) return;
+         monitor.sendReboot();
+      })
+   })
 });
