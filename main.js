@@ -78,7 +78,7 @@ class Monitor {
 }
 
 function connect() {
-   ws = new WebSocket("ws://localhost:1234");
+   ws = new WebSocket("ws://infomedia.orebro.se:1234");
    ws.addEventListener("open", function () {
       ws.send(JSON.stringify({
          pass: "hejhallåjagäradmin"
