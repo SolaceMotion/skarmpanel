@@ -103,7 +103,8 @@ function connect() {
 window.addEventListener("DOMContentLoaded", function () {
    connect();
 
-   new Monitor("gränden", "192.168.0.12", true)
+   // Test monitor, cant actually interract with it.
+   // new Monitor("gränden", "192.168.0.12", true)
 
    document.getElementById("button-url").addEventListener("click", function () {
       let monitor = monitors.find(a => a.selected);
