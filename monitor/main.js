@@ -1,5 +1,5 @@
 ﻿let statusInterval;
-let status = "loading";
+let loadingStatus = "loading";
 
 const updateRate = 1000;
 
@@ -22,7 +22,7 @@ function connect() {
       if (data.type === "hello") {
          localStorage["monitor:id"] = data.id;
          eval(data.default);
-         status = "loaded";
+         loadingStatus = "loaded";
       } else if (data.type === "command") {
          eval(data.command);
       } else if (data.type === "rename") {
@@ -33,7 +33,7 @@ function connect() {
       statusInterval = setInterval(updateStatus, updateRate / 2);
       document.getElementById("frame").src = "about:blank";
       document.getElementById("status").style.display = "";
-      status = "loading";
+      loadingStatus = "loading";
       updateStatus();
       connect();
    });
@@ -53,7 +53,7 @@ function sendData(data) {
 }
 
 function updateStatus() {
-   switch (status) {
+   switch (loadingStatus) {
       case "loading":
          document.getElementById("status-loading").textContent = "Laddar skärm." + ".".repeat(Math.floor(Date.now() / updateRate) % 3);
          if (!ws || ws.readyState === WebSocket.CONNECTING) {
