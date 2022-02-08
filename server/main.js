@@ -4,7 +4,12 @@ const fs = require("fs");
 
 require("dotenv").config()
 
-console.log("The current password starts with "+process.env.password.substring(0,3)+"*".repeat(process.env.password.length-3))
+if(process.env.password !== undefined) {
+   console.log("The current password starts with "+process.env.password.substring(0,3)+"*".repeat(process.env.password.length-3))
+}
+else {
+   throw "Create a .env file in current directory ./server/"
+}
 
 const {Client: Remote} = require("ssh2")
 
