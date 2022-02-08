@@ -2,6 +2,15 @@
 const https = require("https");
 const fs = require("fs");
 
+require("dotenv").config()
+
+if(process.env.password !== undefined) {
+   console.log("The current password starts with "+process.env.password.substring(0,3)+"*".repeat(process.env.password.length-3))
+}
+else {
+   throw "Create a .env file in current directory ./server/"
+}
+
 const {Client: Remote} = require("ssh2")
 
 const adminpass = "hejhallåjagäradmin";
@@ -116,8 +125,8 @@ class Client {
 
             const host = monitor.ip
             const port = 22
-            const username = ""
-            const password = ""
+            const username = "pi"
+            const password = process.env.password;
 
             console.log("Rebooting " + data.id + ".")
 

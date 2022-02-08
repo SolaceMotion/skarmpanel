@@ -10,7 +10,7 @@ function updateActions() {
    document.getElementById("button-rename").disabled = selected !== 1;
    document.getElementById("button-swap").disabled = selected !== 2;
    document.getElementById("button-reset").disabled = selected === 0;
-   document.getElementById("button-reboot").disabled = selected === 0;
+   document.getElementById("button-reboot").disabled = selected !== 1;
 }
 
 class Monitor {
