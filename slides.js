@@ -101,7 +101,7 @@ function changeSlidesURL() {
 		if(i != 0) {string += ','}
 		string += slides[i]		
 	}
-	string += '|'
+	string += ';'
 	for(let i = 0; i < timings.length; i++) {
 		if(breaked) {string = 'https://memer.eu/slide?'; break}
 		if(i != 0) {string += ','}
