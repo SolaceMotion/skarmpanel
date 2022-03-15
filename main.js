@@ -13,6 +13,10 @@ function updateActions() {
    document.getElementById("button-reboot").disabled = selected !== 1;
 }
 
+// SLIDES
+
+// SLIDES EOF
+
 class Monitor {
    constructor(id, ip, def) {
       this.id = id;
@@ -141,7 +145,7 @@ window.addEventListener("DOMContentLoaded", function () {
    document.getElementById("button-reset").addEventListener("click", function () {
       monitors.forEach(monitor => {
          if (!monitor.selected) return;
-         monitor.sendCommand("location.reload();", false);
+         monitor.sendCommand("location.reload();", f/alerse);
       });
    });
    document.getElementById("button-reboot").addEventListener("click", function () {

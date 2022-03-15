@@ -39,17 +39,55 @@ h1 {
 	text-shadow: 0 3px rgba(0, 0, 0, 0.5);
 }
 
+h2 {
+	font-weight: 400;
+
+}
+
 p {
 	color: #4e4e4e;
 	font-weight: bold;
 }
 
+.slide-content {
+	width: 100%;
+	grid: 0;
+}
+
+.slide-content button {
+	padding: 5px;
+	margin-top: 10px;
+}
+
+.slide-content div {
+	margin-top: 3px;
+}
+
+.slide-content div > input{
+	border: 2px solid #bbbbbb;
+	padding: 6px;
+	border-radius: 6px;
+	width: 380px;
+	max-width: 70%;
+}
+
+.slide-content div > input[type=number]{
+	width: 50px;
+	margin-left: 4px;
+}
+
+#copy {
+	cursor: pointer;
+}
+
 #monitor-container {
 	grid-area: monitors;
 }
+
 #action-container {
+	display: grid;
 	grid-area: actions;
-	padding: 50px;
+	padding: 50px 50px;
 	background-color: #ded7d7;
 }
 
